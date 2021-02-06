@@ -1,0 +1,28 @@
+service: node-sse
+
+plugins:
+  - serverless-offline
+  - serverless-websockets-plugin
+
+provider:
+  name: node-sse
+  runtime: nodejs12.x
+  stage: dev
+  region: ap-southeast-1
+  websocketApiRouteSelectionExpression: $request.body.action
+
+functions:
+  app:
+    handler: index.handler
+    events:
+      - http:
+          path: /
+          method: ANY
+          cors: true
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
+      - eventgateway:
+          type: sync
+          eventType: http.request
