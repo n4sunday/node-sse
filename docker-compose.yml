@@ -1,0 +1,6 @@
+version: "3"
+services:
+  node:
+    image: n4sunday/node-sse
+    ports:
+      - "3000:3000"

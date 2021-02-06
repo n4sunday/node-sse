@@ -47,6 +47,9 @@ const streamRandomNumbers = (req, res) => {
 }
 
 server.get('/random', useServerSentEventsMiddleware, streamRandomNumbers)
+server.get('/', (req, res) => {
+    res.send('AWS EC2 Ready')
+})
 
 
 server.listen(port, () => console.log(`Server Ready Post : ${port}`));

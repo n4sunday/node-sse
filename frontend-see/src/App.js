@@ -14,7 +14,7 @@ const useEventSource = (url) => {
 }
 
 function App() {
-  const data = useEventSource('http://localhost:3000/random');
+  const data = useEventSource('http://13.212.158.147:3000/random');
 
   if (!data) {
     return <div />
